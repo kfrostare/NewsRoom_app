@@ -1,2 +1,15 @@
-<p>A breaking news item</p>
-<p>Some breaking action</p>
+<h1>A breaking news item</h1>
+<h3>Some breaking action </h3>
+<%= form_for :article, url: articles_path do |f| %>
+<p>
+  <%= f.label :title %><br>
+  <%= f.text_field :content %>
+</p>
+<p>
+  <%= f.label :content %>
+  <%= f.text_area :content %>
+</p>
+<p>
+  <%= f.submit %> 
+</p>
+<% end %>
