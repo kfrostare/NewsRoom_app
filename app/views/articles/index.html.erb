@@ -1,7 +1,17 @@
-<ul>
-  <% @articles.each do |article| %>
-    <li>
-      <%= link_to article.title, article_path(article) %><br />
-    </li>
-  <% end %>
-</ul>
+<h1>A breaking news item</h1>
+<p>Some really breaking action</p>
+
+<h1>Create a New Article</h1>
+<%= form_for :article, url: articles_path do |f| %>
+<p>
+  <%= f.label :title %><br>
+  <%= f.text_field :content %>
+</p>
+<p>
+  <%= f.label :text %>
+  <%= f.text_area :text %>
+</p>
+<p>
+  <%= f.submit %> 
+</p>
+<% end %>

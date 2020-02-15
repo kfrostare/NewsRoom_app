@@ -1,36 +1,44 @@
 require "rails_helper"
 
-feature 'User can edit specific article' do
+feature 'User can create articles' do
+  before do
+    visit root_path
+    click_on "New Article"
+  end
+
+  context "Successfully create an article [Happy Path]" do
     before do
-      create(:article, title: 'The edit of content', content: 'I will edit the content of this article')
-      create(:article, title: 'A breaking news item', content: 'Some breaking action')
-      create(:article, title: 'Learn Rails 5', content: 'Build awesome rails applications')
-
-      visit root_path
-      click_on 'The edit of content'
-    end
-  
-    context 'Article displays' do
-      it 'title' do
-        expect(page).to have_content 'The edit of content'
-      end
-  
-      it 'content' do
-        expect(page).to have_content 'I will edit the content of this article'
-      end
+      fill_in "Title", with: "Happy holidays"
+      fill_in "Content", with: "Buy your gifts now!"
+      click_on "Create Article"
     end
 
-    context 'content can be edited' do
-        it 'user can click edit button' do
-            click_on 'Edit article'
-            expect(page).to have_content 'Save and publish'
-        end
+    it 'User should be on article show page' do
+      article = Article.find_by(title: 'Happy holidays')
+      expect(current_path).to eq article_path(article)
+    end
 
-        it 'user can change content' do
-            click_on 'Edit article'
-            fill_in 'Article', with: 'BlaBla'
-            click_on 'Save and publish'
-            expect(page).to have_content 'BlaBla'
-        end
+    it 'User should see success message' do
+      expect(page).to have_content 'Article was successfully created.'
+    end
+
+    it 'User should see article title' do
+      expect(page).to have_content 'Happy holidays'
+    end
+
+    it 'User should see article content' do
+      expect(page).to have_content 'Buy your gifts now!'
     end
   end
+
+  context "User doesn't enter a title for the article [Sad Path]" do
+    before do
+      fill_in "Content", with: "Buy your gifts now!"
+      click_on "Create Article"
+    end
+
+    it 'User should see error message' do
+      expect(page).to have_content "Title can't be blank"
+    end
+  end
+end
