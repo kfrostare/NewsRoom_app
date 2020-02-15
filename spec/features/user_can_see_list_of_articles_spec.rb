@@ -2,7 +2,7 @@
 require "rails_helper"
 
 feature 'List articles on index page' do
-  context 'with articles in db' do #db = database
+  context 'with articles in db' do
     before do
       create(:article, title: 'A breaking news item')
       create(:article, title: 'Learn Rails 5')
@@ -15,7 +15,7 @@ feature 'List articles on index page' do
     end
 
     it 'displays second article title' do
-      expect(page).to have_content 'Some really breaking action'
+      expect(page).to have_content 'Learn Rails 5'
     end
   end
 end
