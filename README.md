@@ -22,3 +22,7 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
+
+As a visitor,
+when I visit the application's landing page,
+I would like to see a list of articles
