@@ -1,162 +1,152 @@
 # The News Room app
-## Work in progress (Code overview)
-This program sets the foundation for an app that library staff an visitors can use to get a better overview of library assets. At the moment the functionality for bullet points in bold are available. When the app is complete a user will be able to:
+## Reviving an old blog (Legacy code)
+The client requested help with freshening up an old blog. The base was built on Ruby on Rails and at this point they needed help with testing and debugging some core functionalities like read and edit existing articles. We went about this assignment using the AUT-cycle to make sure we don't spend time on anything the client doesn't ask for, which is especially risky when dealing with basic structures that you really just want to take and "run with" development wise.
 
-* **be assigned a library card with an account number**
-* **view a list of all library books**
-* **search a book by title**
-* **search a book by author**
-* checkout book (if book is available to checkout, or else error message)
-* upon checkout the book will get assigned a return date
-* view a return date for books currently checked out
-* view checked out books in user account
-* return book to the library
-* send a message if book has passed its return date
+### User stories
+*The app has been built with two requests in mind. These are the user stories of our client.*
 
+**Show a list of articles**<br>
+As a visitor <br>
+When I visit the application's landing page <br>
+I would like to see a list of articles
+
+**Enable a publisher to edit**<br>
+As a publisher<br>
+In order to keep my content accurate<br>
+I would like to be able to edit my articles
+
+*For more information and installment details scroll past the image*
 <img src="./Assets/library.jpg" width="400" height="200">
 
-# User stories
-*The app has been built with four requests in mind. These are the user stories of our customer.*
+## Getting started
+This is how to pick up where we left off, by getting this project up and running on your local machine. Let us know what you changed to make it even more awesome! 
+### Setup
+To access this code visit [GitHub Repo](https://github.com/kfrostare/AUT-cycle) and complete the following steps:
 
-**Show a list of all books**<br>
-As a user<br>
-In order to check out a book<br>
-I want to see a list of books with title and author
+1. **Make sure you've got Rails installed, if not do**
+```
+$ gem install rails
+```
+2. **Scaffold the Rails application you'll be working with**
+```
+$ rails new rails_demo --database=postgresql --skip-test
+$ cd rails_demo
+```
+3. **Add the following gems to your development- and test groups of the Gemfile**
+```
+group :development, :test do
+  gem 'rspec-rails'
+  gem 'shoulda-matchers'
+  gem 'factory_bot_rails'
+  gem 'capybara' 
+end
+```
+4. **Install the dependencies with Bundler**
+```
+$ bundle 
+```
+5. **Run the Rspec generator to add the testing framework to your Rails app**
+```
+$ bundle exec rails generate rspec:install
 
-**Show book availability**<br>
-As a library<br>
-In order for visitors to check if a book is available or not<br>
-We need a list that shows available books 
+```
+6. **Configure shoulda-matchers, your spec/rails_helpe.rb should look something like this:**
+```
+require 'spec_helper'
 
-**Make possible to check out book**<br>
-As a library<br>
-In order for visitors to check out books<br>
-We need an app for them to access the list of books
+ENV['RAILS_ENV'] ||= 'test'
 
-**Make possible to see checked out book's due date**<br>
-As a visitor<br>
-In order to return the books within a month of checkout<br>
-I need an app that shows the date it is due
+require File.expand_path('../config/environment', __dir__)
 
-## Dependencies
-| Ruby | Gems: Rspec, Pry-ByeBug | Yaml |
+abort("The Rails environment is running in production mode!") if 				Rails.env.production?
+require 'rspec/rails'
 
-## Setup
-To access this code visit [GitHub](https://github.com/kfrostare/library-challenge) repo and complete the following steps:
+begin
+	ActiveRecord::Migration.maintain_test_schema!
+rescue ActiveRecord::PendingMigrationError => e
+	puts e.to_s.strip
+	exit 1
+end
 
-1. Fork the repo and clone
-2. Have Ruby and Gem bundler installed
-3. Utilize IRB to run program
+RSpec.configure do |config|
+	config.fixture_path = "#{::Rails.root}/spec/fixtures"
+	config.use_transactional_fixtures = true
+	config.infer_spec_type_from_file_location!
+	config.filter_rails_from_backtrace!
+	config.include FactoryBot::Syntax::Methods
+end
 
-## Instructions
-Instructions for running in IRB.
+Shoulda::Matchers.configure do |config|
+	config.integrate do |with|
+		with.test_framework :rspec
+		with.library :rails
+	end
+end
+```
+7. **TIP: To avoid the generators to scaffold too many files we recommend you make the following modifications to your config/application.rb -file;**
+```
+class Application < Rails::Application
 
-**Library card** | Generates a new library card ID 
+	# Disable generation of helpers, javascripts, CSS, and view, helper, routing and controller specs
 
-        Library card = User.new
-*This will assign you a brand new user ID and show you the book list of currently borrowed books (0)*
+	config.generators do |generate|
+		generate.helper false
+		generate.assets false
+		generate.view_specs false
+		generate.helper_specs false
+		generate.routing_specs false
+		generate.controller_specs false
+	end
+# ...
+end
+```
+8. The last thing is to open .rspec and modify so the first line is set to:
+```
+--format documentation
+```
+9. Now if you run Rspec in your terminal it should give you an output like:
+```
+$ rspec
+No examples found.
 
-## Acknowledgements
-The material has been provided by [Craft Academy](learn.craftacademy.co) <br>
-The app is being created in [Ruby](rubymonstas.org) <br>
-The app is being tested in [Rspec](rspec.info) <br>
-We would like to thank [Kayla Woodbury](https://github.com/kaylawoodbury) for helping us with the Ruby/Yaml- connection
+Finished in 0.00023 seconds (files took 0.5029 seconds to load)
+0 examples, 0 failures
+```
+### Building and launching
+- The material has been provided by [Craft Academy](learn.craftacademy.co) <br>
+- The app is being created in [Ruby on Rails](https://rubyonrails.org/) <br>
+- The app is being tested in [Rspec](rspec.info) <br>
+- We are also using [Coveralls](https://coveralls.io/), [Semaphore](https://coveralls.io/) and [Heroku](http://heroku.com/) as our API's of choice
+
+## We would like to thank
+- [Pierre Tiberi](https://github.com/pierre-1) for helping with the setup of this application
+- [Nathan Pascua](https://www.youtube.com/watch?v=Dtcp3mJznCw) for his RoR tutorial on seeds.rb
+- [BarbieTechFabulous](https://www.youtube.com/watch?v=xbW4K3h8hRU&list=PLRtV6ODziifub4Eav114vhu0BGypwCLph&index=3&t=351s) for her tutorial on editing and deleting blog
+- The people at [Ruby On Rails](https://guides.rubyonrails.org/getting_started.html#updating-articles) for providing such pedagogical instructions on how to set up their application and its features
 
 ## Updates/Improvement Plans
-There will be updates to this software shortly.
+Since this is a work in progress we'll keep you posted by continuously updating our to-do list below
+
+**User can**
+
+**[ x ] Enter the News Room and see a list of articles by title** <br>
+**[ x ] Click on any title to read entire article** <br>
+**[ x ] After having read an article they can go back or edit** <br>
+[ - ] Comment on articles <br>
+[ - ] Edit their comment <br>
+[ - ] Delete their comment <br>
+[ - ] Share an article in other social media channels <br>
+
+**Authors can**
+
+**[ x ] Edit article title- and content** <br>
+[ - ] Log in as author <br>
+[ - ] Create a new article <br>
+[ - ] Add themselves as author <br>
+[ - ] Add images to their articles <br>
+[ - ] Toggle comments- feature in articles <br>
+[ - ] Delete comments <br>
+[ - ] Respond to comments <br>
 
 ## License
 MIT License
-
-
-
-
-
-
-
-
-# The Little News Room
-**Week 6 of learning how to code.** Building a platform for a little blogbasic BMI-calculator that lets you know if you are normal, over- or underweight. Testing functions with Cypress and launching with GitHub. [View the BMI-calculator live through GitHub](https://kfrostare.github.io/BMI_repo/)
-*More information below the image.*
-![The BMI Calculator](src/assets/css/bmicover01.jpg)
-### Assignment
-**Make sure the user can:**
-* Enter weight
-* Enter height
-* Press calculate- button
-* View a message
-### Programs practiced in this challenge
-* **Coding**
-: | JavaScript | Html | Css |
-* **Testing**
-: | Cypress | Yarn |  
-* **Launching**
-: | GitHub |
-* **Other**
-: | VSCode | Git |
-## Build, test and launch
-* Built with the source-code editor [Visual Studio Code](https://code.visualstudio.com/)
-* Tested with [Cypress](https://www.cypress.io/); the Js End to End testing framework
-* Launched using [GitHub](https://github.com/); the world's leading software development platform
-## Authors
-* **Karolina Frostare** has built this application
-* **[Craft Academy](https://www.craftacademy.se/english/)** has created this challenge and provided the learning material needed to accept it
-## Acknowledgments
-* The image used was (royalty) free and provided by [Pixabay.com](https://pixabay.com/)
-* This assignment was provided by [Craft Academy](https://www.craftacademy.se/english/)
-```
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-# README
-
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-As a visitor,
-when I visit the application's landing page,
-I would like to see a list of articles
-
-As a publisher
-In order to keep my content accurate
-I would like to be able to edit my articles
-
-https://www.youtube.com/watch?v=Dtcp3mJznCw
-https://www.youtube.com/watch?v=xbW4K3h8hRU&list=PLRtV6ODziifub4Eav114vhu0BGypwCLph&index=3&t=351s edit and deleting blog entries (barbietechfabulous)
-https://guides.rubyonrails.org/getting_started.html#updating-articles 
