@@ -100,11 +100,11 @@ class Application < Rails::Application
 # ...
 end
 ```
-8. The last thing is to open .rspec and modify so the first line is set to:
+8. **The last thing is to open .rspec and modify so the first line is set to:**
 ```
 --format documentation
 ```
-9. Now if you run Rspec in your terminal it should give you an output like:
+9. **Now if you run Rspec in your terminal it should give you an output like:**
 ```
 $ rspec
 No examples found.
