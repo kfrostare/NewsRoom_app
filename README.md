@@ -117,6 +117,7 @@ Finished in 0.00023 seconds (files took 0.5029 seconds to load)
 - The app is being created in [Ruby on Rails](https://rubyonrails.org/) <br>
 - The app is being tested in [Rspec](rspec.info) <br>
 - We are also using [Coveralls](https://coveralls.io/), [Semaphore](https://coveralls.io/) and [Heroku](http://heroku.com/) as our API's of choice
+- To make things pretty in .scss we used [bootstrap](https://rubygems.org/gems/bootstrap) along with [sprockets-rails](https://rubygems.org/gems/sprockets-rails) and [jquery-rails](https://rubygems.org/gems/jquery-rails)
 
 ## We would like to thank
 - [Pierre Tiberi](https://github.com/pierre-1) for helping with the setup of this application
