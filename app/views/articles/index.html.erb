@@ -2,20 +2,21 @@
 
 <%# Controls the padding so the page is responsive %>
 <div class="row" syle="padding-top:10%;">
-<div class="col"></div>
-<div class="col-md-11 text-center">
+  <div class="col"></div>
+  <div class="col-md-11 text-center">
 
-<%# This is our text and list of articles %>
-<h1>The News Room</h1>
-<p>Welcome to The News Room. Below you'll find all the latest articles. Click to read or edit.</p>
-<br>
-  <% @articles.each do |article| %>
-    <li>
-      <%= link_to article.title, article_path(article) %><br />
-    </li>
-  <% end %>
-</ul>
+    <%# This is our text and list of articles %>
+    <h1>The News Room</h1>
+    <p>Welcome to The News Room. Below you'll find all the latest articles. Click to read or edit.</p>
+    <br>
 
-</div>
-<div class="col"></div>
+    <div class="wrapper">
+      <% @articles.each do |article| %>
+      <li>
+        <%= link_to article.title, article_path(article) %><br/>
+      </li>
+      <% end %>
+    </div>
+  </div>
+  <div class="col"></div>
 </div>

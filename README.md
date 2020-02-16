@@ -16,7 +16,7 @@ In order to keep my content accurate<br>
 I would like to be able to edit my articles
 
 *For more information and installment details scroll past the image*<br>
-<img src="./Assets/library.jpg" width="400" height="200"><br>
+<img src="./app/assets/images/printscreen.jpg" width="" height=""><br>
 
 ## Getting started
 This is how to pick up where we left off, by getting this project up and running on your local machine. Let us know what you changed to make it even more awesome! 
