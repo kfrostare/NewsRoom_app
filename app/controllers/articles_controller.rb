@@ -7,10 +7,6 @@ class ArticlesController < ApplicationController
     @article = Article.find(params[:id])
   end
 
-  def create
-    @article = Article.new(article_params)
-  end
-
   def delete
     @article = Article.find(params[:id])
   end
@@ -21,8 +17,8 @@ class ArticlesController < ApplicationController
 
   def update #save
     @article = Article.find(params[:id])
-    if @article.update(article_params)
-      redirect_to @article
+    if @article.update(params)
+      redirect_to @articles
     else
       render 'edit'
     end
