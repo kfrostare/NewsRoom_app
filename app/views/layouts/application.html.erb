@@ -2,7 +2,6 @@
 <html>
   <head>
     <title>AutChallengeApp</title>
-    <link rel="stylesheet" href="">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -11,7 +10,8 @@
   </head>
 
   <body>
-  <div class="container">
+  <%# Don't move the div class container it has to do with the padding of the article pages.. %>
+  <div class="container"> 
     <%= yield %>
   </div>
   </body>
