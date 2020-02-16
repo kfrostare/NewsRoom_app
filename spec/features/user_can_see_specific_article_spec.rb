@@ -12,7 +12,7 @@ feature 'User can see specific article' do
     #show_path
     context 'Article displays' do
       it 'title' do
-        expect(page).to have_content 'This is where you can read an entire article'
+        expect(page).to have_content 'A breaking news item'
       end
   
       it 'content' do

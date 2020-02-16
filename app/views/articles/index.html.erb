@@ -1,7 +1,7 @@
 <%# root_path %>
-
-<h1>This is where you see a list of articles</h1>
-<p>... And also if you'd like to edit or create some new ones!</p>
+<h1>The News Room</h1>
+<p>Welcome to The News Room. Below you'll find all the latest articles. Click to read!</p>
+<br>
   <% @articles.each do |article| %>
     <li>
       <%= link_to article.title, article_path(article) %><br />

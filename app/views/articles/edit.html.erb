@@ -1,8 +1,6 @@
 <%# edit_article_path %>
-
-
 <h1>Edit Article</h1>
- 
+ <br>
 <%= form_with(model: @article, local: true) do |form| %>
  
   <% if @article.errors.any? %>
