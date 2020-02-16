@@ -1,8 +1,11 @@
 @import "bootstrap";
 
-body
-{background-image: url(/app/assets/newsroombg.jpg);}
+body { 
+    background-image: image-url('');
+    background-size: cover;
+}
 
-.container
-{padding-top: 200px;}
+.container {
+    padding-top: 200px;
+}
 

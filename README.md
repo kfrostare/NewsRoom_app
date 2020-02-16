@@ -122,6 +122,7 @@ Finished in 0.00023 seconds (files took 0.5029 seconds to load)
 - [Pierre Tiberi](https://github.com/pierre-1) for helping with the setup of this application
 - [Nathan Pascua](https://www.youtube.com/watch?v=Dtcp3mJznCw) for his RoR tutorial on seeds.rb
 - [BarbieTechFabulous](https://www.youtube.com/watch?v=xbW4K3h8hRU&list=PLRtV6ODziifub4Eav114vhu0BGypwCLph&index=3&t=351s) for her tutorial on editing and deleting blog
+- [Howilearnedrails](https://howilearnedrails.wordpress.com/2014/01/18/add-a-background-image-to-a-ruby-on-rails-app-using-bootstrap-css/) for good tips on syling the app in scss/bootstrap
 - The people at [Ruby On Rails](https://guides.rubyonrails.org/getting_started.html#updating-articles) for providing such pedagogical instructions on how to set up their application and its features
 
 ## Updates/Improvement Plans
