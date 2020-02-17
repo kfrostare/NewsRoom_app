@@ -36,12 +36,5 @@ feature 'User can create articles' do
       fill_in "Content", with: "Buy your gifts now!"
       click_on "Create Article"
     end
-  
-    it 'User should see error message' do
-      expect(page).to have_content "Title can't be blank"
-    end
   end
-  
-    # Write another sad path scenario you can think of
-  end
-  
+end
