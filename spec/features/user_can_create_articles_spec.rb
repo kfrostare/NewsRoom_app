@@ -18,8 +18,8 @@ feature 'User can create articles' do
       expect(current_path).to eq article_path(article)
     end
   
-    it 'User should see success message' do
-      expect(page).to have_content 'Article was successfully created.'
+    it 'User should see their own saved content' do
+      expect(page).to have_content 'Happy holidays'
     end
   
     it 'User should see article title' do
