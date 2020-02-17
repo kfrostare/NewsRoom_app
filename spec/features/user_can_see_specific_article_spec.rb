@@ -19,4 +19,4 @@ feature 'User can see specific article' do
         expect(page).to have_content 'Some breaking action'
       end
     end
-  end
+end

@@ -13,9 +13,12 @@
     <div class="wrapper">
       <% @articles.each do |article| %>
       <li>
-        <%= link_to article.title, article_path(article) %><br/>
+        <%= link_to article.title, article_path(article) %>
       </li>
       <% end %>
+    <br>
+    <br>
+    <%= link_to 'Create Article', new_article_path %>
     </div>
   </div>
   <div class="col"></div>
