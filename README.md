@@ -3,7 +3,7 @@
 The client requested help with freshening up an old blog. The base was built on Ruby on Rails and at this point they needed help with testing and debugging some core functionalities like read and edit existing articles. We went about this assignment using the AUT-cycle to make sure we don't spend time on anything the client doesn't ask for, which is especially risky when dealing with basic structures that you really just want to take and "run with" development wise.
 
 ### User stories
-*The app has been built with two requests in mind. These are the user stories of our client.*
+*The app has been built with three requests in mind. These are the user stories of our client.*
 
 **Show a list of articles**<br>
 As a visitor <br>
@@ -14,6 +14,11 @@ I would like to see a list of articles
 As a publisher<br>
 In order to keep my content accurate<br>
 I would like to be able to edit my articles
+
+**Enable a publisher to create**<br>
+As a publisher <br>
+In order to supply my readers with fresh content <br>
+I would like to be able to create new articles
 
 *For more information and installment details scroll past the image*<br>
 <img src="./app/assets/images/printscreen.jpg" width="" height=""><br>
@@ -142,8 +147,8 @@ Since this is a work in progress we'll keep you posted by continuously updating 
 **Authors can**
 
 **[ x ] Edit article title- and content** <br>
+**[ x ] Create a new article** <br>
 [ - ] Log in as author <br>
-[ - ] Create a new article <br>
 [ - ] Add themselves as author <br>
 [ - ] Add images to their articles <br>
 [ - ] Toggle comments- feature in articles <br>
